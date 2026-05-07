@@ -2,7 +2,7 @@
 
 ## External contributions
 
-External PRs are not currently accepted. CLA wiring (cla-assistant.io + Harmony CLA) is a hard gate of the v0.1.0 § 1 Prerequisites milestone but is **deferred per maintainer decision** ([clk-am/strat#9](https://github.com/clk-am/strat/issues/9)). Bug reports via [GitHub issues](https://github.com/clk-am/ui/issues) are welcome.
+External PRs are not currently accepted. CLA wiring (cla-assistant.io + Harmony CLA) is a hard gate of the v0.1.0 § 1 Prerequisites milestone but is **deferred per maintainer decision**. Bug reports via [GitHub issues](https://github.com/clk-am/ui/issues) are welcome.
 
 When external contributions are accepted, the CLA bot will be wired before any PR can merge.
 
@@ -31,7 +31,7 @@ pnpm link --global @clkam/ui-tokens
 ## Conventions
 
 - **Commits**: feature-focused subjects, conventional-commits style (`feat:`, `fix:`, `refactor:`, `docs:`).
-- **Components**: Lit 3.x with Shadow DOM by default per [ADR 0005](https://github.com/clk-am/strat/blob/main/decisions/0005-lit-as-component-framework.md). Vanilla escape hatch only for <30 LOC, stateless primitives.
+- **Components**: Lit 3.x with Shadow DOM by default. Vanilla escape hatch only for <30 LOC, stateless primitives.
 - **Lit version**: pinned exact (no `^` or `~`). Bumps require a PR with bundle-size delta.
 - **Attribute mapping**: kebab-case attributes require explicit `@property({ attribute: 'delta-period' })` declaration. Lit's default lowercases the property name (e.g., `deltaPeriod` → `deltaperiod`).
 - **Styles**: `static styles = css`...`` with `--clk-*` tokens for theme values, `::part()` for restylable internal anchors, slots for content composition.
@@ -45,7 +45,7 @@ If a consumer ships to a browser below the floor (out-of-policy), Lit injects a 
 
 ## Architectural changes
 
-Architectural deviations require a numbered ADR in [`clk-am/strat:decisions/`](https://github.com/clk-am/strat/tree/main/decisions). Examples: switching framework, changing the npm scope, removing Shadow DOM. Component-level decisions (new component shape, new prop) do NOT require an ADR — discuss in the PR.
+Architectural deviations require a documented decision before implementation — examples: switching framework, changing the npm scope, removing Shadow DOM. Open an issue first, ping the maintainer, and we'll capture the decision. Component-level decisions (new component shape, new prop) do NOT need this — discuss in the PR.
 
 ## Code of conduct
 

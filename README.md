@@ -6,7 +6,7 @@ Design system for [clk.am](https://clk.am) — design tokens + Web Components co
 
 ## Packages
 
-The repo is a pnpm workspace. Once v0.1.0 ships, the following packages will be published to npm under the `@clkam/*` scope ([ADR 0004](https://github.com/clk-am/strat/blob/main/decisions/0004-npm-scope-clkam.md)):
+The repo is a pnpm workspace. Once v0.1.0 ships, the following packages will be published to npm under the canonical `@clkam/*` scope (the hyphenated `@clk-am/*` scope is reserved as squat-protection only and never published to):
 
 | Package | Status | Purpose |
 |---------|--------|---------|
@@ -16,18 +16,16 @@ The repo is a pnpm workspace. Once v0.1.0 ships, the following packages will be 
 
 ## Roadmap
 
-The canonical implementation plan lives in [`clk-am/strat:design-system/plan.md`](https://github.com/clk-am/strat/blob/main/design-system/plan.md). Milestones are mirrored as GitHub issues in this repo, attached to the `v0.1.0` milestone.
+The implementation plan is tracked via the [`v0.1.0` GitHub milestone](https://github.com/clk-am/ui/milestone/1) and its 8 issues — each issue carries its own acceptance criteria, files-to-create list, and dependencies inline.
 
-For the broader platform context (Phase 1 → Phase 2 → Phase 3), see [`clk-am/strat:ROADMAP.md`](https://github.com/clk-am/strat/blob/main/ROADMAP.md).
+## Architecture choices
 
-## Architecture decisions
+Key choices baked into v0.1.0:
 
-This repo follows the architecture decisions captured in [`clk-am/strat:decisions/`](https://github.com/clk-am/strat/tree/main/decisions):
-
-- [ADR 0004](https://github.com/clk-am/strat/blob/main/decisions/0004-npm-scope-clkam.md) — npm scope `@clkam/*` canonical
-- [ADR 0005](https://github.com/clk-am/strat/blob/main/decisions/0005-lit-as-component-framework.md) — Lit 3.x as Web Components framework
-- [ADR 0006](https://github.com/clk-am/strat/blob/main/decisions/0006-storybook-hosting.md) — Storybook hosting (CF Pages + CF Access)
-- [ADR 0007](https://github.com/clk-am/strat/blob/main/decisions/0007-clk-am-ui-public-apache-2-from-day-1.md) — public, Apache-2.0, from day 1
+- **npm scope `@clkam/*`** — canonical for all packages. Hyphenated `@clk-am/*` reserved as squat-protection only, never published.
+- **Lit 3.x with Shadow DOM** — chosen for ergonomic reactive properties past ~5 components, real style encapsulation via `adoptedStyleSheets`, and CSS-custom-property token inheritance through the shadow boundary. Lit version pinned exact (no `^` or `~`); vanilla escape hatch reserved for <30 LOC stateless primitives.
+- **Storybook on `storybook.clk.am`** — Cloudflare Pages with Cloudflare Access in front during pre-v1.0 to gate work-in-progress content.
+- **Public Apache-2.0 from day 1** — eliminates private-npm friction, unlocks npm provenance attestation from v0.1.0, aligns with industry-standard design-system OSS practice (Material Web, Adobe Spectrum, IBM Carbon — all Apache-2.0). Trademarks retained per Apache § 6 carve-out (see `NOTICE`).
 
 ## Browser support floor
 
@@ -35,11 +33,11 @@ This repo follows the architecture decisions captured in [`clk-am/strat:decision
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md). External contributions are not currently accepted (CLA wiring is parked — see [clk-am/strat#9](https://github.com/clk-am/strat/issues/9)). Bug reports via GitHub issues are welcome.
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md). External contributions are not currently accepted (CLA wiring is parked). Bug reports via GitHub issues are welcome.
 
 ## Trademark
 
-The names **clkam**, **@clkam**, **clk-am**, and the clkam logo are trademarks of O2CS&I and are NOT licensed under Apache License 2.0. Apache § 6 carve-out applies — descriptive use such as “based on `@clkam/ui-tokens`” in a fork is permitted. Anything beyond § 6 requires written permission. See `NOTICE`.
+The names **clkam**, **@clkam**, **clk-am**, and the clkam logo are trademarks of O2CS&I and are NOT licensed under Apache License 2.0. Apache § 6 carve-out applies — descriptive use such as "based on `@clkam/ui-tokens`" in a fork is permitted. Anything beyond § 6 requires written permission. See `NOTICE`.
 
 ## License
 
